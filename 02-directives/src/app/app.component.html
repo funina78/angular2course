@@ -1,0 +1,40 @@
+<h1>Attribute Directives</h1>
+<h2>ngClass / ngStyle </h2>
+<!--<div [ngClass]="{border: true, background: true}"></div>-->  <!--border and background are defined in css  -->
+
+<div [ngStyle]="{'background-color': 'red'}"></div>
+<hr>
+<h2>Custom Attribute Directive</h2>
+<div [highlight]="'black'" [defaultColor]="'yellow'">Some text</div>
+
+<h1>Structural Directives</h1>
+<h2>*ngIf</h2>
+<div *ngIf="switch">Conditional text</div>
+<!--This works exact same as *ngIf, *is the syntax sugar added to the ngIf to hide the template creation and destroy on [ngIf] property binding-->
+<template [ngIf]="switch">
+    <div>Conditional text</div>
+</template>
+<button (click)="onSwitch()">Switch</button>
+<hr>
+<h2>*ngFor</h2>
+<ul>
+    <li *ngFor="let item of items; let i of index">{{item}} - (index {{i}})</li>
+</ul>
+<hr>
+<h2>ngSwitch</h2>
+<div [ngSwitch]="value">
+    <p *ngSwitchCase="10">10</p>
+    <p *ngSwitchCase="100">100</p>
+    <p *ngSwitchDefault>Default</p>
+</div>
+<!-- works same as above by remove the * and add template, and change outside wrap to <p>-->
+<p [ngSwitch]="value">
+    <template [ngSwitchCase]="10">10</template>
+    <template [ngSwitchCase]="100">100</template>
+    <template ngSwitchDefault>Default</template>
+</p>
+<hr>
+<h1>Custom structural directive</h1>
+<h2>*ngUnless</h2>
+<div *unless="switch">Conditional text</div>
+<br><br><br><br>
